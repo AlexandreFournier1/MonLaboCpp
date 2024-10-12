@@ -11,7 +11,7 @@ Time::Time()
 	setMinute(0);
 }
 
-Time::Time(Time &t)
+Time::Time(const Time &t)
 {
 	setHour(t.getHour());
 	setMinute(t.getMinute());
@@ -52,17 +52,17 @@ void Time::setMinute(int m)
 	minute = m;
 }
 
-int Time::getHour()
+int Time::getHour() const
 {
 	return hour;
 }
 
-int Time::getMinute()
+int Time::getMinute() const
 {
 	return minute;
 }
 
-void Time::display()
+void Time::display() const
 {
 	cout << "Time : " << hour << "h" << minute << endl;
 }

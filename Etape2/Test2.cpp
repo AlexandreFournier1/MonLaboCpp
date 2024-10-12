@@ -26,8 +26,8 @@ int main(int argc,char* argv[])
     {
       case 1 : Essai1(); break;
       case 2 : Essai2(); break;
-      /*case 3 : Essai3(); break;
-      case 4 : Essai4(); break;*/
+      case 3 : Essai3(); break;
+      case 4 : Essai4(); break;
       default : fini = true ; break;
     }
   }
@@ -115,7 +115,7 @@ void Essai2()
     cout << endl;
   }
 
-  /*cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
+  cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
   {
     Timing t;
     t.setDay("Mardi");
@@ -160,12 +160,12 @@ void Essai2()
     t1.display();
     cout << endl << endl;
   }
-}*/
+}
 
 /*******************************************************************************************************/
 /*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
 /*******************************************************************************************************/
-/*void Essai3()
+void Essai3()
 {
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
   {
@@ -189,7 +189,7 @@ void Essai2()
     cout << endl;
   }
 
-  cout << endl << "(3) ***** Test du constructeur d'initialisation ********************************" << endl;
+  /*cout << endl << "(3) ***** Test du constructeur d'initialisation ********************************" << endl;
   {
     Event event(2,"Cinema avec les potos");
     event.setTiming(Timing("Vendredi",Time(19,30),Time(150)));
@@ -217,15 +217,15 @@ void Essai2()
     cout << "event1 (APRES) : ";
     event1.display();
     cout << endl << endl;
-  }
-}*/
+  }*/
+}
 
 /*******************************************************************************************************/
 /*** Tests des variables statiques utiles **************************************************************/
 /*******************************************************************************************************/
-/*void Essai4()
+void Essai4()
 {
-  cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;
+  /*cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;
   cout << "Premier jour de la semaine : " << Timing::MONDAY << endl;
   // ne pas oublier les autres jours de la semaine...
   cout << "Dernier jour de la semaine : " << Timing::SUNDAY << endl << endl;
@@ -266,6 +266,6 @@ void Essai2()
   cout << "Event::currentCode = " << Event::currentCode << endl;
   cout << "e1.currentCode = " << e1.currentCode << endl;
   cout << "e2.currentCode = " << e2.currentCode << endl;
-  cout << "e3.currentCode = " << e3.currentCode << endl << endl;
-}*/
+  cout << "e3.currentCode = " << e3.currentCode << endl << endl;*/
+}
 

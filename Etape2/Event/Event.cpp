@@ -4,12 +4,15 @@
 using namespace std;
 
 #include "Event.h"
+#include "Timing.h"
+#include "Time.h"
 
 Event::Event() // constructeur par défaut
 {
 	setCode(1);
 	title = nullptr;
 	setTitle("default");
+	timing = nullptr;
 }
 
 Event::Event(int c, const char *t) // constructeur d'initialisation
@@ -24,6 +27,7 @@ Event::Event(const Event &e) // copie d'un objet et on veut pas de modification
 	setCode(e.getCode());
 	title = nullptr;
 	setTitle(e.getTitle());
+	setTiming(e.getTiming());
 }
 
 Event::~Event() // desctructeur
@@ -44,6 +48,14 @@ void Event::setTitle(const char *t)
 	strcpy(title, t);
 }
 
+void Event::setTiming(Timing*t)
+{
+	if (timing) delete timing;
+	
+	//timing = new Timing(t);
+	timing = t;
+}
+
 int Event::getCode() const
 {
 	return code;
@@ -54,7 +66,14 @@ const char * Event::getTitle() const // on précise par le const (avant) que ce 
 	return title;
 }
 
+Timing* Event::getTiming() const
+{
+	return timing;
+}
+
 void Event::display() const
 {
 	cout << "Event (" << code << ") :" << title << endl;
+	if (!timing) return;
+	timing->display();
 }
