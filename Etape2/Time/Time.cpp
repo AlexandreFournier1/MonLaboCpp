@@ -5,6 +5,8 @@ using namespace std;
 
 #include "Time.h"
 
+namespace planning {
+
 Time::Time()
 {
 	setHour(0);
@@ -17,10 +19,7 @@ Time::Time(const Time &t)
 	setMinute(t.getMinute());
 }
 
-Time::~Time()
-{
-	
-}
+Time::~Time() {}
 
 Time::Time(int h, int m)
 {
@@ -65,4 +64,6 @@ int Time::getMinute() const
 void Time::display() const
 {
 	cout << "Time : " << hour << "h" << minute << endl;
+}
+
 }

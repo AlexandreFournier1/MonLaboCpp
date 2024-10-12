@@ -3,6 +3,8 @@
 
 #include "Time.h"
 
+namespace planning {
+
 class Timing
 {
 private:
@@ -12,18 +14,22 @@ private:
 public:
 	Timing();
 	Timing(const Timing &t);
-	Timing(const string d, const Time s, const Time dura);
+	Timing(const string& d, const Time& s, const Time& dura);
 	~Timing();
 
 	string getDay() const;
 	Time getStart() const;
 	Time getDuration() const;
 
-	void setDay(const string d);
-	void setStart(const Time s);
-	void setDuration(const Time d);
+	void setDay(const string& d);
+	void setStart(const Time& s);
+	void setDuration(const Time& d);
 
 	void display() const;
+
+	static string const MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
 };
+
+}
 
 #endif

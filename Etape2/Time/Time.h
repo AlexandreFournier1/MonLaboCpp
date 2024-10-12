@@ -1,6 +1,8 @@
 #ifndef TIME_H
 #define TIME_H
 
+namespace planning {
+
 class Time
 {
 private:
@@ -21,5 +23,7 @@ public:
 
 	void display() const;
 };
+
+}
 
 #endif
