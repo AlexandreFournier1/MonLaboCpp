@@ -30,11 +30,20 @@ Time::Time(const Time &t)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Time::~Time() 
+Time::Time(int duration)
 {
 	#ifdef DEBUG
-		cout << "--- Appel du destructeur ---" << endl;
+		cout << "--- Appel du constructeur d'initialisation 2 ---" << endl;
 	#endif
+
+	if (duration / 60 == 0)
+	{
+		setMinute(duration);
+		return;
+	}
+
+	setHour(duration/60);
+	setMinute(duration%60);
 }
 
 //////////////////////////////////////////////////////////////
@@ -53,20 +62,11 @@ Time::Time(int h, int m)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Time::Time(int duration)
+Time::~Time() 
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur d'initialisation 2 ---" << endl;
+		cout << "--- Appel du destructeur ---" << endl;
 	#endif
-
-	if (duration / 60 == 0)
-	{
-		setMinute(duration);
-		return;
-	}
-
-	setHour(duration/60);
-	setMinute(duration%60);
 }
 
 //////////////////////////////////////////////////////////////
@@ -229,6 +229,30 @@ Time operator-(const Time&t1, const Time&t2)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
+ostream& operator<<(ostream& s, const Time& t)
+{
+	s << "Time : " << setw(2) << setfill('0') << t.getHour() << "h" << setw(2) << setfill('0') << t.getMinute() << endl;
+	return s;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+istream& operator>>(istream& s, Time& t)
+{
+	string tmp;
+
+	s >> tmp;
+
+	t.setHour(stoi(tmp.substr(0,2)));
+	t.setMinute(stoi(tmp.substr(3,2)));
+
+	return s;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
 int Time::operator<(const Time&t)
 {
 	return compT(t) == -1;
@@ -249,5 +273,86 @@ int Time::operator==(const Time&t)
 {
 	return compT(t) == 0;
 }
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+Time Time::operator++() // pré-incrémentation
+{
+	/*(*this.minute) = (*this.minute) + 30;
+
+	return (*this);*/
+
+	minute += 30;
+
+    if (minute >= 60)
+    {
+        hour += minute / 60;
+        minute = minute % 60;
+    }
+
+    return (*this);
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+Time Time::operator++(int) // post-incrémentation
+{
+	Time tmp(*this);
+	//(*this.minute) = (*this.minute) + 30;
+
+	minute += 30;
+
+    if (minute >= 60)
+    {
+        hour += minute / 60;
+        minute = minute % 60;
+    }
+
+	return tmp;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+Time Time::operator--() // pré-décrémentation
+{
+	/*(*this.minute) = (*this.minute) - 30;
+
+	return (*this);*/
+
+	minute -= 30;
+
+    if (minute < 0)
+	{
+		hour -= -minute / 60;
+		minute = 60 - (-minute % 60);
+	}
+
+    return (*this);
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+Time Time::operator--(int) // post-décrémentation
+{
+	Time tmp(*this);
+	//(*this.minute) = (*this.minute) - 30;
+
+	minute -= 30;
+
+    if (minute < 0)
+	{
+		hour -= -minute / 60;
+		minute = 60 - (-minute % 60);
+	}
+
+	return tmp;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 }

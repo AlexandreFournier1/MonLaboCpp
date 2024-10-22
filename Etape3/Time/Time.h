@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <cstring>
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -19,6 +20,9 @@ class Time
 	friend Time operator-(const int m, const Time&t);
 	friend Time operator-(const Time&t1, const Time&t2);
 
+	friend ostream& operator<<(ostream& s, const Time& t);
+	friend istream& operator>>(istream& s, Time& t);
+
 private:
 	int hour;
 	int minute;
@@ -27,9 +31,11 @@ private:
 public:
 	Time();
 	Time(const Time &t);
-	~Time();
 	Time(int h, int m);
 	Time(int duration);
+	~Time();
+
+	//////////////////////////////////////////////////////////////
 
 	int getHour() const;
 	int getMinute() const;
@@ -37,13 +43,23 @@ public:
 	void setHour(int h);
 	void setMinute(int m);
 
+	//////////////////////////////////////////////////////////////
+
 	void display() const;
+
+	//////////////////////////////////////////////////////////////
 
 	Time& operator=(const Time&t);
 
 	int operator<(const Time&t);
 	int operator>(const Time&t);
 	int operator==(const Time&t);
+
+	Time operator++();
+	Time operator++(int);
+
+	Time operator--();
+	Time operator--(int);
 };
 
 }
