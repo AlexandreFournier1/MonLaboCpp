@@ -22,6 +22,8 @@ class Time
 private:
 	int hour;
 	int minute;
+
+	int compT(const Time& t);
 public:
 	Time();
 	Time(const Time &t);
@@ -39,7 +41,9 @@ public:
 
 	Time& operator=(const Time&t);
 
-	
+	int operator<(const Time&t);
+	int operator>(const Time&t);
+	int operator==(const Time&t);
 };
 
 }
