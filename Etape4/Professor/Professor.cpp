@@ -27,6 +27,10 @@ Professor::Professor(const Professor& p):Schedulable()
 
 Professor::Professor(int i, string ln, string fn):Schedulable(i)
 {
+	#ifdef DEBUG
+		cout << "[Professor] Appel constructeur d'initialisation" << endl;
+	#endif
+
 	setLastName(ln);
 	setFirstName(fn);
 }

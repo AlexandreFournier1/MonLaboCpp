@@ -3,7 +3,7 @@
 using namespace std;
 
 #include "Professor.h"
-//#include "Group.h"
+#include "Group.h"
 //#include "Classroom.h"
 
 int  Menu();
@@ -99,7 +99,7 @@ void Essai1()
 
 void Essai2()
 {
-  /*cout << endl << "----- 2.1 Test du constructeur par defaut --------------------------------------" << endl;
+  cout << endl << "----- 2.1 Test du constructeur par defaut --------------------------------------" << endl;
   Group g1;
   cout << "--> Voici g1 : " << g1 << endl;
 
@@ -122,7 +122,7 @@ void Essai2()
 
   cout << endl << "----- 2.6 Test de l'operateur = de Group --------------------------------------" << endl;
   g1 = g3;
-  cout << "--> Voici g1 (apres affectation) : " << g1 << endl;*/
+  cout << "--> Voici g1 (apres affectation) : " << g1 << endl;
 }
 
 /***********************************************************************************************/

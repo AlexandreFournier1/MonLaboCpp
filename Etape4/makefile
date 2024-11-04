@@ -3,9 +3,10 @@ TIME=./Time
 TIMING=./Timing
 SCHEDULABLE=./Schedulable
 PROFESSOR=./Professor
+GROUP=./Group
 
-COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR)
-OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o
+COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR) -I $(GROUP)
+OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o
 EXEC=Test4
 ECHO=echo Creation de
 
@@ -14,9 +15,9 @@ ECHO=echo Creation de
 
 .SILENT:
 
-Test4:	Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o
+Test4:	Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o
 		$(ECHO) Test4
-		$(COMPIL) Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o -o Test4
+		$(COMPIL) Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o -o Test4
 
 ############################################################################################
 ############################################################################################
@@ -52,6 +53,13 @@ $(SCHEDULABLE)/Schedulable.o:	$(SCHEDULABLE)/Schedulable.cpp $(SCHEDULABLE)/Sche
 $(PROFESSOR)/Professor.o:	$(PROFESSOR)/Professor.cpp $(PROFESSOR)/Professor.h
 							$(ECHO) Professor.o
 							$(COMPIL) $(PROFESSOR)/Professor.cpp -c -o $(PROFESSOR)/Professor.o 
+
+############################################################################################
+############################################################################################
+
+$(GROUP)/Group.o:	$(GROUP)/Group.cpp $(GROUP)/Group.h
+					$(ECHO) Group.o
+					$(COMPIL) $(GROUP)/Group.cpp -c -o $(GROUP)/Group.o
 
 ############################################################################################
 ############################################################################################
