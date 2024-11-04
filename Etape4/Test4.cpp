@@ -3,8 +3,8 @@
 using namespace std;
 
 #include "Professor.h"
-#include "Group.h"
-#include "Classroom.h"
+//#include "Group.h"
+//#include "Classroom.h"
 
 int  Menu();
 void Essai1();
@@ -99,7 +99,7 @@ void Essai1()
 
 void Essai2()
 {
-  cout << endl << "----- 2.1 Test du constructeur par defaut --------------------------------------" << endl;
+  /*cout << endl << "----- 2.1 Test du constructeur par defaut --------------------------------------" << endl;
   Group g1;
   cout << "--> Voici g1 : " << g1 << endl;
 
@@ -122,7 +122,7 @@ void Essai2()
 
   cout << endl << "----- 2.6 Test de l'operateur = de Group --------------------------------------" << endl;
   g1 = g3;
-  cout << "--> Voici g1 (apres affectation) : " << g1 << endl;
+  cout << "--> Voici g1 (apres affectation) : " << g1 << endl;*/
 }
 
 /***********************************************************************************************/
@@ -133,7 +133,7 @@ void Essai2()
 
 void Essai3()
 {
-  cout << endl << "----- 3.1 Test du constructeur par defaut --------------------------------------" << endl;
+  /*cout << endl << "----- 3.1 Test du constructeur par defaut --------------------------------------" << endl;
   Classroom c1;
   cout << "--> Voici c1 : " << c1 << endl;
 
@@ -158,7 +158,7 @@ void Essai3()
 
   cout << endl << "----- 3.6 Test de l'operateur = de Classroom ---------------------------------------" << endl;
   c1 = c3;
-  cout << "--> Voici c1 (apres affectation) : " << c1 << endl;
+  cout << "--> Voici c1 (apres affectation) : " << c1 << endl;*/
 }
 
 /******************************************************************************************/
@@ -167,7 +167,7 @@ void Essai3()
 
 void Essai4()
 {
-  srand((unsigned)time(NULL));
+  /*srand((unsigned)time(NULL));
 
   cout << endl << "----- 4.1 Allocation dynamique de Schedulables ---------------------------------" << endl;
   Schedulable* schedulables[10];
@@ -198,7 +198,7 @@ void Essai4()
   
   cout << endl << "----- 4.3 Liberation memoire ---------------------------------------------------" << endl;
   for (int i=0 ; i<10 ; i++) delete schedulables[i];  // Tout se passe-t-il comme vous voulez ?
-  // Pour etre plus precis, quid des destructeurs et de la virtualite ?
+  // Pour etre plus precis, quid des destructeurs et de la virtualite ?*/
 }
 
 /*********************************************************************************************/
@@ -207,7 +207,7 @@ void Essai4()
 
 void Essai5()
 {
-  srand((unsigned)time(NULL));
+  /*srand((unsigned)time(NULL));
 
   cout << endl << "----- 5.1 Allocation dynamique de Schedulables ---------------------------------" << endl;
   Schedulable* schedulables[10];
@@ -245,5 +245,5 @@ void Essai5()
   }
 
   cout << endl << "----- 5.3 Liberation memoire ---------------------------------------------------" << endl;
-  for (int i=0 ; i<10 ; i++) delete schedulables[i];
+  for (int i=0 ; i<10 ; i++) delete schedulables[i];*/
 }
