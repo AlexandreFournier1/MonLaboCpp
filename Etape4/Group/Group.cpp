@@ -1,6 +1,6 @@
 #include "Group.h"
 
-//#define DEBUG
+#define DEBUG
 
 Group::Group():Schedulable()
 {

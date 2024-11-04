@@ -4,9 +4,10 @@ TIMING=./Timing
 SCHEDULABLE=./Schedulable
 PROFESSOR=./Professor
 GROUP=./Group
+CLASSROOM=./Classroom
 
-COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR) -I $(GROUP)
-OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o
+COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR) -I $(GROUP) -I $(CLASSROOM)
+OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o
 EXEC=Test4
 ECHO=echo Creation de
 
@@ -15,9 +16,9 @@ ECHO=echo Creation de
 
 .SILENT:
 
-Test4:	Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o
+Test4:	Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o
 		$(ECHO) Test4
-		$(COMPIL) Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o -o Test4
+		$(COMPIL) Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o -o Test4
 
 ############################################################################################
 ############################################################################################
@@ -60,6 +61,13 @@ $(PROFESSOR)/Professor.o:	$(PROFESSOR)/Professor.cpp $(PROFESSOR)/Professor.h
 $(GROUP)/Group.o:	$(GROUP)/Group.cpp $(GROUP)/Group.h
 					$(ECHO) Group.o
 					$(COMPIL) $(GROUP)/Group.cpp -c -o $(GROUP)/Group.o
+
+############################################################################################
+############################################################################################
+
+$(CLASSROOM)/Classroom.o:	$(CLASSROOM)/Classroom.cpp $(CLASSROOM)/Classroom.h
+							$(ECHO) Classroom.o
+							$(COMPIL) $(CLASSROOM)/Classroom.cpp -c -o $(CLASSROOM)/Classroom.o
 
 ############################################################################################
 ############################################################################################

@@ -1,118 +1,121 @@
-#include "Professor.h"
+#include "Classroom.h"
 
 #define DEBUG
 
-Professor::Professor():Schedulable()
+Classroom::Classroom():Schedulable()
 {
 	#ifdef DEBUG
-		cout << "[Professor] Appel constructeur par défaut" << endl;
+		cout << "[Classroom] Appel constructeur par défaut" << endl;
 	#endif
 
-	setLastName("vide");
-	setFirstName("vide");
+	setName("vide");
+	setSeatingCapacity(0);
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Professor::Professor(const Professor& p):Schedulable()
+Classroom::Classroom(const Classroom& c):Schedulable()
 {
 	#ifdef DEBUG
-		cout << "[Professor] Appel constructeur de copie" << endl;
+		cout << "[Classroom] Appel constructeur de copie" << endl;
 	#endif
 
-	setLastName(p.getLastName());
-	setFirstName(p.getLastName());
+	setName(c.getName());
+	setSeatingCapacity(c.getSeatingCapacity());
 }
 
-Professor::Professor(int i, string ln, string fn):Schedulable(i)
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+Classroom::Classroom(int i, string n, int s):Schedulable(i)
 {
 	#ifdef DEBUG
-		cout << "[Professor] Appel constructeur d'initialisation" << endl;
+		cout << "[Classroom] Appel constructeur d'initialisation" << endl;
 	#endif
 
-	setLastName(ln);
-	setFirstName(fn);
+	setName(n);
+	setSeatingCapacity(s);
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Professor::~Professor()
+Classroom::~Classroom()
 {
 	#ifdef DEBUG
-		cout << "[Professor] Appel destructeur" << endl;
+		cout << "[Classroom] Appel destructeur" << endl;
 	#endif
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-void Professor::setLastName(const string ln)
+void Classroom::setName(const string n)
 {
-	lastName = ln;
+	name = n;
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-void Professor::setFirstName(const string fn)
+void Classroom::setSeatingCapacity(const int s)
 {
-	firstName = fn;
+	seatingCapacity = s;
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-string Professor::getLastName() const
+string Classroom::getName() const
 {
-	return lastName;
+	return name;
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-string Professor::getFirstName() const
+int Classroom::getSeatingCapacity() const
 {
-	return firstName;
+	return seatingCapacity;
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-string Professor::toString() const
+string Classroom::toString() const
 {
 	ostringstream oss;
-	oss << this->getLastName() << " " << this->getFirstName() << endl;
+	oss << this->getName() << " (" << this->getSeatingCapacity() << ")" << endl;
 	return oss.str();
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-string Professor::tuple() const
+string Classroom::tuple() const
 {
 	ostringstream oss;
-	oss << this->getId() << ";" << this->getLastName() << ";" << this->getFirstName() << endl;
+	oss << this->getId() << ";" << this->toString() << endl;
 	return oss.str();
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-ostream& operator<<(ostream& s, const Professor& p)
+ostream& operator<<(ostream& s, const Classroom& c)
 {
-	s << p.toString() << endl;
+	s << c.toString() << endl;
 	return s;
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Professor& Professor::operator=(const Professor& p)
+Classroom& Classroom::operator=(const Classroom& c)
 {
-	setFirstName(p.getFirstName());
-	setLastName(p.getLastName());
+	setName(c.getName());
+	setSeatingCapacity(c.getSeatingCapacity());
 
 	return (*this);
 }
