@@ -1,6 +1,8 @@
 #ifndef TIME_H
 #define TIME_H
 
+#include "TimeException.h"
+
 #include <iomanip>
 #include <stdlib.h>
 #include <cstring>

@@ -74,7 +74,11 @@ Time::~Time()
 
 void Time::setHour(int h)
 {
-	if(h < 0 || h > 24) return;
+	if(h < 0 || h > 24)
+	{
+		throw TimeException("Invalid hour", TimeException::INVALID_HOUR);
+	}
+
 	hour = h;
 }
 
@@ -83,7 +87,11 @@ void Time::setHour(int h)
 
 void Time::setMinute(int m)
 {
-	if(m < 0 || m > 60) return;
+	if(m < 0 || m > 60)
+	{
+		throw TimeException("Invalid minute", TimeException::INVALID_MINUTE);
+	}
+
 	minute = m;
 }
 
@@ -151,6 +159,11 @@ Time operator+(const Time&t, const int m)
 		tmp.minute = tmp.minute % 60;
 	}
 
+	if (tmp.hour >= 24)
+    {
+        throw TimeException("Overflow: time exceeds 23:59", TimeException::OVERFLOW);
+    }
+
 	return tmp;
 }
 
@@ -195,6 +208,11 @@ Time operator-(const Time&t, const int m)
 		tmp.hour -= -tmp.minute / 60;
 		tmp.minute = 60 - (-tmp.minute % 60);
 	}
+
+	if (tmp.hour < 0)
+    {
+        throw TimeException("Overflow: time goes below 00:00", TimeException::OVERFLOW);
+    }
 
 	return tmp;
 }
@@ -287,6 +305,11 @@ Time Time::operator++() // pré-incrémentation
         minute = minute % 60;
     }
 
+    if (hour >= 24)
+    {
+        throw TimeException("Overflow: time exceeds 23:59", TimeException::OVERFLOW);
+    }
+
     return (*this);
 }
 
@@ -305,6 +328,11 @@ Time Time::operator++(int) // post-incrémentation
         minute = minute % 60;
     }
 
+    if (hour >= 24)
+    {
+        throw TimeException("Overflow: time exceeds 23:59", TimeException::OVERFLOW);
+    }
+
 	return tmp;
 }
 
@@ -320,6 +348,11 @@ Time Time::operator--() // pré-décrémentation
 		hour -= -minute / 60;
 		minute = 60 - (-minute % 60);
 	}
+
+	if (hour < 0)
+    {
+        throw TimeException("Overflow: time goes below 00:00", TimeException::OVERFLOW);
+    }
 
     return (*this);
 }
@@ -338,6 +371,11 @@ Time Time::operator--(int) // post-décrémentation
 		hour -= -minute / 60;
 		minute = 60 - (-minute % 60);
 	}
+
+	if (hour < 0)
+    {
+        throw TimeException("Overflow: time goes below 00:00", TimeException::OVERFLOW);
+    }
 
 	return tmp;
 }
