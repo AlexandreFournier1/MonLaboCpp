@@ -12,13 +12,11 @@ namespace planning {
 
 class Time
 {
-	friend Time operator+(const Time&t, const int m);
+	friend Time operator+(const Time&t, const int m); // Mis en friend car le compilateur disait qu'il y avait une ambiguité
 	friend Time operator+(const int m, const Time&t);
-	friend Time operator+(const Time&t1, const Time&t2);
-
-	friend Time operator-(const Time&t, const int m);
+	friend Time operator+(const Time&t1, const Time&t2); // Mis en friend car le compilateur disait qu'il y avait une ambiguité
+	
 	friend Time operator-(const int m, const Time&t);
-	friend Time operator-(const Time&t1, const Time&t2);
 
 	friend ostream& operator<<(ostream& s, const Time& t);
 	friend istream& operator>>(istream& s, Time& t);
@@ -51,9 +49,12 @@ public:
 
 	Time& operator=(const Time&t);
 
-	int operator<(const Time&t);
-	int operator>(const Time&t);
-	int operator==(const Time&t);
+	Time operator-(const int m);
+	Time operator-(const Time&t2);
+
+	bool operator<(const Time&t);
+	bool operator>(const Time&t);
+	bool operator==(const Time&t);
 
 	Time operator++();
 	Time operator++(int);

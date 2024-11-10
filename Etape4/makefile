@@ -1,13 +1,8 @@
-EVENT=./Event
-TIME=./Time
-TIMING=./Timing
-SCHEDULABLE=./Schedulable
-PROFESSOR=./Professor
-GROUP=./Group
-CLASSROOM=./Classroom
+CLASSES=./Classes
+OBJETS=./Objets
 
-COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR) -I $(GROUP) -I $(CLASSROOM)
-OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o
+COMPIL=g++ -Wall -I $(CLASSES) -I $(OBJETS)
+FICHIERS_OBJS=$(OBJETS)/Event.o $(OBJETS)/Time.o $(OBJETS)/Timing.o $(OBJETS)/Schedulable.o $(OBJETS)/Professor.o $(OBJETS)/Group.o $(OBJETS)/Classroom.o
 EXEC=Test4
 ECHO=echo Creation de
 
@@ -16,64 +11,64 @@ ECHO=echo Creation de
 
 .SILENT:
 
-Test4:	Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o
+Test4:	Test4.cpp $(FICHIERS_OBJS)
 		$(ECHO) Test4
-		$(COMPIL) Test4.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o -o Test4
+		$(COMPIL) Test4.cpp $(FICHIERS_OBJS) -o Test4
 
 ############################################################################################
 ############################################################################################
 
-$(TIME)/Time.o:	$(TIME)/Time.cpp $(TIME)/Time.h
-				$(ECHO) Time.o 
-				$(COMPIL) $(TIME)/Time.cpp -c -o $(TIME)/Time.o
+$(OBJETS)/Time.o:	$(CLASSES)/Time.cpp $(CLASSES)/Time.h
+					$(ECHO) Time.o 
+					$(COMPIL) $(CLASSES)/Time.cpp -c -o $(OBJETS)/Time.o
 
 ############################################################################################
 ############################################################################################
 
-$(TIMING)/Timing.o: $(TIMING)/Timing.cpp $(TIMING)/Timing.h
+$(OBJETS)/Timing.o: $(CLASSES)/Timing.cpp $(CLASSES)/Timing.h
 					$(ECHO) Timing.o
-					$(COMPIL) $(TIMING)/Timing.cpp -c -o $(TIMING)/Timing.o
+					$(COMPIL) $(CLASSES)/Timing.cpp -c -o $(OBJETS)/Timing.o
 
 ############################################################################################
 ############################################################################################
 
-$(EVENT)/Event.o: 	$(EVENT)/Event.cpp $(EVENT)/Event.h
+$(OBJETS)/Event.o: 	$(CLASSES)/Event.cpp $(CLASSES)/Event.h
 					$(ECHO) Event.o
-					$(COMPIL) $(EVENT)/Event.cpp -c -o $(EVENT)/Event.o
+					$(COMPIL) $(CLASSES)/Event.cpp -c -o $(OBJETS)/Event.o
 
 ############################################################################################
 ############################################################################################
 
-$(SCHEDULABLE)/Schedulable.o:	$(SCHEDULABLE)/Schedulable.cpp $(SCHEDULABLE)/Schedulable.h
-								$(ECHO) Schedulable.o
-								$(COMPIL) $(SCHEDULABLE)/Schedulable.cpp -c -o $(SCHEDULABLE)/Schedulable.o
+$(OBJETS)/Schedulable.o:	$(CLASSES)/Schedulable.cpp $(CLASSES)/Schedulable.h
+							$(ECHO) Schedulable.o
+							$(COMPIL) $(CLASSES)/Schedulable.cpp -c -o $(OBJETS)/Schedulable.o
 
 ############################################################################################
 ############################################################################################
 
-$(PROFESSOR)/Professor.o:	$(PROFESSOR)/Professor.cpp $(PROFESSOR)/Professor.h
-							$(ECHO) Professor.o
-							$(COMPIL) $(PROFESSOR)/Professor.cpp -c -o $(PROFESSOR)/Professor.o 
+$(OBJETS)/Professor.o:	$(CLASSES)/Professor.cpp $(CLASSES)/Professor.h
+						$(ECHO) Professor.o
+						$(COMPIL) $(CLASSES)/Professor.cpp -c -o $(OBJETS)/Professor.o 
 
 ############################################################################################
 ############################################################################################
 
-$(GROUP)/Group.o:	$(GROUP)/Group.cpp $(GROUP)/Group.h
+$(OBJETS)/Group.o:	$(CLASSES)/Group.cpp $(CLASSES)/Group.h
 					$(ECHO) Group.o
-					$(COMPIL) $(GROUP)/Group.cpp -c -o $(GROUP)/Group.o
+					$(COMPIL) $(CLASSES)/Group.cpp -c -o $(OBJETS)/Group.o
 
 ############################################################################################
 ############################################################################################
 
-$(CLASSROOM)/Classroom.o:	$(CLASSROOM)/Classroom.cpp $(CLASSROOM)/Classroom.h
-							$(ECHO) Classroom.o
-							$(COMPIL) $(CLASSROOM)/Classroom.cpp -c -o $(CLASSROOM)/Classroom.o
+$(OBJETS)/Classroom.o:	$(CLASSES)/Classroom.cpp $(CLASSES)/Classroom.h
+						$(ECHO) Classroom.o
+						$(COMPIL) $(CLASSES)/Classroom.cpp -c -o $(OBJETS)/Classroom.o
 
 ############################################################################################
 ############################################################################################
 
 clean:
-	rm -f $(OBJS) core
+	rm -f $(FICHIERS_OBJS) core
 	
 clobber: clean
 	rm -f $(EXEC)
