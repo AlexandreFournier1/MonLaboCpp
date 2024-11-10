@@ -1,31 +1,46 @@
-EVENT=./Event
-TIME=./Time
-TIMING=./Timing
-COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING)
-OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o
+CLASSES=./Classes
+OBJETS=./Objets
+
+COMPIL=g++ -Wall -I $(CLASSES) -I $(OBJETS)
+FICHIERS_OBJS=$(OBJETS)/Event.o $(OBJETS)/Time.o $(OBJETS)/Timing.o
 EXEC=Test3
 ECHO=echo Creation de
 
+############################################################################################
+############################################################################################
+
 .SILENT:
 
-Test3:	Test3.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o
+Test3:	Test3.cpp $(OBJETS)/Time.o $(OBJETS)/Timing.o $(OBJETS)/Event.o
 		$(ECHO) Test3
-		$(COMPIL) Test3.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o -o Test3
+		$(COMPIL) Test3.cpp $(FICHIERS_OBJS) -o Test3
 
-$(TIME)/Time.o:	$(TIME)/Time.cpp $(TIME)/Time.h
+############################################################################################
+############################################################################################
+
+$(OBJETS)/Time.o:	$(CLASSES)/Time.cpp $(CLASSES)/Time.h
 				$(ECHO) Time.o 
-				$(COMPIL) $(TIME)/Time.cpp -c -o $(TIME)/Time.o
+				$(COMPIL) $(CLASSES)/Time.cpp -c -o $(OBJETS)/Time.o
 
-$(TIMING)/Timing.o: $(TIMING)/Timing.cpp $(TIMING)/Timing.h
+############################################################################################
+############################################################################################
+
+$(OBJETS)/Timing.o: $(CLASSES)/Timing.cpp $(CLASSES)/Timing.h
 					$(ECHO) Timing.o
-					$(COMPIL) $(TIMING)/Timing.cpp -c -o $(TIMING)/Timing.o
+					$(COMPIL) $(CLASSES)/Timing.cpp -c -o $(OBJETS)/Timing.o
 
-$(EVENT)/Event.o: 	$(EVENT)/Event.cpp $(EVENT)/Event.h
+############################################################################################
+############################################################################################
+
+$(OBJETS)/Event.o: 	$(CLASSES)/Event.cpp $(CLASSES)/Event.h
 					$(ECHO) Event.o
-					$(COMPIL) $(EVENT)/Event.cpp -c -o $(EVENT)/Event.o
+					$(COMPIL) $(CLASSES)/Event.cpp -c -o $(OBJETS)/Event.o
+
+############################################################################################
+############################################################################################
 
 clean:
-	rm -f $(OBJS) core
+	rm -f $(FICHIERS_OBJS) core
 	
 clobber: clean
 	rm -f $(EXEC)

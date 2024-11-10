@@ -1,9 +1,10 @@
-// Fichier .h :
-// déclaration de la classe et la déclaration des méthodes dedans
-// Variable membre statique : on les déclare dans le .h et on les initialise dans le .cpp
-
-#ifndef EVENT_H // si la macro n'est pas définie, je la défini
+#ifndef EVENT_H
 #define EVENT_H
+
+#include <stdlib.h>
+#include <cstring>
+#include <iostream>
+using namespace std;
 
 #include "Timing.h"
 
@@ -19,7 +20,9 @@ public:
 	Event();
 	Event(int c, const char *t);
 	Event(const Event &e);
-	~Event(); // pour supprimer les variables pointeurs
+	~Event(); 
+
+	//////////////////////////////////////////////////////////////
 
 	void setCode(int c);
 	void setTitle(const char *t);
@@ -27,9 +30,13 @@ public:
 
 	int getCode() const;
 	const char * getTitle() const;
-	Timing getTiming() const; // pas de pointeur car on retourne un objet et non un pointeur
+	Timing getTiming() const;
+
+	//////////////////////////////////////////////////////////////
 
 	void display() const;
+
+	//////////////////////////////////////////////////////////////
 
 	static int currentCode;
 };
