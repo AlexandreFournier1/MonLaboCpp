@@ -3,6 +3,7 @@
 #include "Time.h"
 #include "Timing.h"
 #include "Event.h"
+#include "TimeException.h"
 
 using namespace std;
 using namespace planning;
@@ -85,11 +86,11 @@ int Menu()
 /**********************************************************************************************/
 void Essai1()
 {
-  /*cout << "----- 1. Test des constructeurs, setXXX() de la classe Time --------" << endl;
+  cout << "----- 1. Test des constructeurs, setXXX() de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     int hour,minute;
     cout << "Entrez l'heure h1 :" << endl;
@@ -114,9 +115,27 @@ void Essai1()
     Time d1(minutes); // !!!
     cout << "--> d1 = " << d1 << endl << endl;    
   }
-  // ...
+
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
   
-  cout << endl;*/
+  cout << endl;
 }
 
 /**********************************************************************************************/

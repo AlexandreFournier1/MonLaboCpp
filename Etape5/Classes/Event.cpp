@@ -14,7 +14,7 @@ int Event::currentCode = 1;
 Event::Event()
 {
 	#ifdef DEBUG
-		cout << "Appel constructeur par défaut" << endl;
+		cout << "[Event] Appel constructeur par défaut" << endl;
 	#endif
 
 	setCode(currentCode);
@@ -29,7 +29,7 @@ Event::Event()
 Event::Event(int c, const char *t)
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur d'initialisation---" << endl;
+		cout << "[Event] Appel du constructeur d'initialisation" << endl;
 	#endif
 
 	setCode(c);
@@ -45,7 +45,7 @@ Event::Event(int c, const char *t)
 Event::Event(const Event &e)
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur de copie---" << endl;
+		cout << "[Event] Appel du constructeur de copie" << endl;
 	#endif
 
 	setCode(e.getCode());
@@ -61,7 +61,7 @@ Event::Event(const Event &e)
 Event::~Event()
 {
 	#ifdef DEBUG
-		cout << "--- Appel du destructeur ---" << endl;
+		cout << "[Event] Appel du destructeur" << endl;
 	#endif
 
 	if (title) delete title;

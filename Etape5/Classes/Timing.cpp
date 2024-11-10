@@ -19,7 +19,7 @@ const string Timing::SUNDAY = "Dimanche";
 Timing::Timing()
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur par défaut ---" << endl;
+		cout << "[Timing] Appel du constructeur par défaut" << endl;
 	#endif
 
 	day = "vide";
@@ -37,7 +37,7 @@ Timing::Timing()
 Timing::Timing(const Timing &t)
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur de copie ---" << endl;
+		cout << "[Timing] Appel du constructeur de copie" << endl;
 	#endif
 
 	setDay(t.getDay());
@@ -51,7 +51,7 @@ Timing::Timing(const Timing &t)
 Timing::Timing(const string& d, const Time& s, const Time& dura)
 {
 	#ifdef DEBUG
-		cout << "--- Appel du constructeur d'initialisation---" << endl;
+		cout << "[Timing] Appel du constructeur d'initialisation" << endl;
 	#endif
 
 	setDay(d);
@@ -65,7 +65,7 @@ Timing::Timing(const string& d, const Time& s, const Time& dura)
 Timing::~Timing() 
 {
 	#ifdef DEBUG
-		cout << "--- Appel du destructeur ---" << endl;
+		cout << "[Timing] Appel du destructeur" << endl;
 	#endif
 }
 
@@ -131,20 +131,29 @@ void Timing::display() const
 
 int Timing::compT(const Timing& t)
 {
-	if (day < t.getDay()) return -1;
-	if (day > t.getDay()) return 1;
+	int posDay, posT, days = 7;
+	string vec[days] = {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY};
 
-	if (start.getMinute() < t.getStart().getMinute()) return -1;
-	if (start.getMinute() > t.getStart().getMinute()) return 1;
+	for (int i = 0; i < days - 1; i++)
+	{
+		if (vec[i] == day) posDay = i;
+		if (vec[i] == t.getDay()) posT = i;
+	}
+
+	if (posDay < posT) return -1;
+	if (posDay > posT) return 1;
 
 	if (start.getHour() < t.getStart().getHour()) return -1;
 	if (start.getHour() > t.getStart().getHour()) return 1;
 
-	if (duration.getMinute() < t.getDuration().getMinute()) return -1;
-	if (duration.getMinute() > t.getDuration().getMinute()) return 1;
+	if (start.getMinute() < t.getStart().getMinute()) return -1;
+	if (start.getMinute() > t.getStart().getMinute()) return 1;
 
 	if (duration.getHour() < t.getDuration().getHour()) return -1;
 	if (duration.getHour() > t.getDuration().getHour()) return 1;
+
+	if (duration.getMinute() < t.getDuration().getMinute()) return -1;
+	if (duration.getMinute() > t.getDuration().getMinute()) return 1;
 
 	return 0;
 }
@@ -152,7 +161,7 @@ int Timing::compT(const Timing& t)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-int Timing::operator<(const Timing&t)
+bool Timing::operator<(const Timing&t)
 {
 	return compT(t) == -1;
 }
@@ -160,7 +169,7 @@ int Timing::operator<(const Timing&t)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-int Timing::operator>(const Timing&t)
+bool Timing::operator>(const Timing&t)
 {
 	return compT(t) == 1;
 }
@@ -168,7 +177,7 @@ int Timing::operator>(const Timing&t)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-int Timing::operator==(const Timing&t)
+bool Timing::operator==(const Timing&t)
 {
 	return compT(t) == 0;
 }

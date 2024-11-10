@@ -1,15 +1,16 @@
-EVENT=./Event
-TIME=./Time
-TIMING=./Timing
-SCHEDULABLE=./Schedulable
-PROFESSOR=./Professor
-GROUP=./Group
-CLASSROOM=./Classroom
-EXCEPTION=./Exception
-TIMEEXCEPTION=./TimeException
+CLASSES=./Classes
+OBJETS=./Objets
 
-COMPIL=g++ -Wall -I $(EVENT) -I $(TIME) -I $(TIMING) -I $(SCHEDULABLE) -I $(PROFESSOR) -I $(GROUP) -I $(CLASSROOM) -I $(EXCEPTION) -I $(TIMEEXCEPTION)
-OBJS=$(EVENT)/Event.o $(TIME)/Time.o $(TIMING)/Timing.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o $(EXCEPTION)/Exception.o $(TIMEEXCEPTION)/TimeException.o
+COMPIL=g++ -Wall -I $(CLASSES) -I $(OBJETS)
+FICHIERS_OBJS=$(OBJETS)/Event.o \
+			$(OBJETS)/Time.o \
+			$(OBJETS)/Timing.o \
+			$(OBJETS)/Schedulable.o \
+			$(OBJETS)/Professor.o \
+			$(OBJETS)/Group.o \
+			$(OBJETS)/Classroom.o \
+			$(OBJETS)/Exception.o \
+			$(OBJETS)/TimeException.o
 EXEC=Test5
 ECHO=echo Creation de
 
@@ -18,75 +19,75 @@ ECHO=echo Creation de
 
 .SILENT:
 
-Test5:	Test5.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o $(EXCEPTION)/Exception.o $(TIMEEXCEPTION)/TimeException.o
+Test5:	Test5.cpp $(FICHIERS_OBJS)
 		$(ECHO) Test5
-		$(COMPIL) Test5.cpp $(TIME)/Time.o $(TIMING)/Timing.o $(EVENT)/Event.o $(SCHEDULABLE)/Schedulable.o $(PROFESSOR)/Professor.o $(GROUP)/Group.o $(CLASSROOM)/Classroom.o $(EXCEPTION)/Exception.o $(TIMEEXCEPTION)/TimeException.o -o Test5
+		$(COMPIL) Test5.cpp $(FICHIERS_OBJS) -o Test5
 
 ############################################################################################
 ############################################################################################
 
-$(TIME)/Time.o:	$(TIME)/Time.cpp $(TIME)/Time.h
-				$(ECHO) Time.o 
-				$(COMPIL) $(TIME)/Time.cpp -c -o $(TIME)/Time.o
+$(OBJETS)/Time.o:	$(CLASSES)/Time.cpp $(CLASSES)/Time.h
+					$(ECHO) Time.o 
+					$(COMPIL) $(CLASSES)/Time.cpp -c -o $(OBJETS)/Time.o
 
 ############################################################################################
 ############################################################################################
 
-$(TIMING)/Timing.o: $(TIMING)/Timing.cpp $(TIMING)/Timing.h
+$(OBJETS)/Timing.o: $(CLASSES)/Timing.cpp $(CLASSES)/Timing.h
 					$(ECHO) Timing.o
-					$(COMPIL) $(TIMING)/Timing.cpp -c -o $(TIMING)/Timing.o
+					$(COMPIL) $(CLASSES)/Timing.cpp -c -o $(OBJETS)/Timing.o
 
 ############################################################################################
 ############################################################################################
 
-$(EVENT)/Event.o: 	$(EVENT)/Event.cpp $(EVENT)/Event.h
+$(OBJETS)/Event.o: 	$(CLASSES)/Event.cpp $(CLASSES)/Event.h
 					$(ECHO) Event.o
-					$(COMPIL) $(EVENT)/Event.cpp -c -o $(EVENT)/Event.o
+					$(COMPIL) $(CLASSES)/Event.cpp -c -o $(OBJETS)/Event.o
 
 ############################################################################################
 ############################################################################################
 
-$(SCHEDULABLE)/Schedulable.o:	$(SCHEDULABLE)/Schedulable.cpp $(SCHEDULABLE)/Schedulable.h
-								$(ECHO) Schedulable.o
-								$(COMPIL) $(SCHEDULABLE)/Schedulable.cpp -c -o $(SCHEDULABLE)/Schedulable.o
+$(OBJETS)/Schedulable.o:	$(CLASSES)/Schedulable.cpp $(CLASSES)/Schedulable.h
+							$(ECHO) Schedulable.o
+							$(COMPIL) $(CLASSES)/Schedulable.cpp -c -o $(OBJETS)/Schedulable.o
 
 ############################################################################################
 ############################################################################################
 
-$(PROFESSOR)/Professor.o:	$(PROFESSOR)/Professor.cpp $(PROFESSOR)/Professor.h
-							$(ECHO) Professor.o
-							$(COMPIL) $(PROFESSOR)/Professor.cpp -c -o $(PROFESSOR)/Professor.o 
+$(OBJETS)/Professor.o:	$(CLASSES)/Professor.cpp $(CLASSES)/Professor.h
+						$(ECHO) Professor.o
+						$(COMPIL) $(CLASSES)/Professor.cpp -c -o $(OBJETS)/Professor.o 
 
 ############################################################################################
 ############################################################################################
 
-$(GROUP)/Group.o:	$(GROUP)/Group.cpp $(GROUP)/Group.h
+$(OBJETS)/Group.o:	$(CLASSES)/Group.cpp $(CLASSES)/Group.h
 					$(ECHO) Group.o
-					$(COMPIL) $(GROUP)/Group.cpp -c -o $(GROUP)/Group.o
+					$(COMPIL) $(CLASSES)/Group.cpp -c -o $(OBJETS)/Group.o
 
 ############################################################################################
 ############################################################################################
 
-$(CLASSROOM)/Classroom.o:	$(CLASSROOM)/Classroom.cpp $(CLASSROOM)/Classroom.h
-							$(ECHO) Classroom.o
-							$(COMPIL) $(CLASSROOM)/Classroom.cpp -c -o $(CLASSROOM)/Classroom.o
+$(OBJETS)/Classroom.o:	$(CLASSES)/Classroom.cpp $(CLASSES)/Classroom.h
+						$(ECHO) Classroom.o
+						$(COMPIL) $(CLASSES)/Classroom.cpp -c -o $(OBJETS)/Classroom.o
 
 ############################################################################################
 ############################################################################################
 
-$(EXCEPTION)/Exception.o:	$(EXCEPTION)/Exception.cpp $(EXCEPTION)/Exception.h
-							$(ECHO) Exception.o
-							$(COMPIL) $(EXCEPTION)/Exception.cpp -c -o $(EXCEPTION)/Exception.o
+$(OBJETS)/Exception.o:	$(CLASSES)/Exception.cpp $(CLASSES)/Exception.h
+						$(ECHO) Exception.o
+						$(COMPIL) $(CLASSES)/Exception.cpp -c -o $(OBJETS)/Exception.o
 
 ############################################################################################
 ############################################################################################
 
-$(TIMEEXCEPTION)/TimeException.o:	$(TIMEEXCEPTION)/TimeException.cpp $(TIMEEXCEPTION)/TimeException.h
-									$(ECHO) TimeException.o
-									$(COMPIL) $(TIMEEXCEPTION)/TimeException.cpp -c -o $(TIMEEXCEPTION)/TimeException.o
+$(OBJETS)/TimeException.o:	$(CLASSES)/TimeException.cpp $(CLASSES)/TimeException.h
+							$(ECHO) TimeException.o
+							$(COMPIL) $(CLASSES)/TimeException.cpp -c -o $(OBJETS)/TimeException.o
 
 clean:
-	rm -f $(OBJS) core
+	rm -f $(FICHIERS_OBJS) core
 	
 clobber: clean
 	rm -f $(EXEC)

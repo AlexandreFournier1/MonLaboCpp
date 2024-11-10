@@ -40,9 +40,9 @@ public:
 
 	//////////////////////////////////////////////////////////////
 
-	int operator<(const Timing&t);
-	int operator>(const Timing&t);
-	int operator==(const Timing&t);
+	bool operator<(const Timing&t);
+	bool operator>(const Timing&t);
+	bool operator==(const Timing&t);
 
 	//////////////////////////////////////////////////////////////
 
