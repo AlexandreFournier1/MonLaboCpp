@@ -143,9 +143,6 @@ int Timing::compT(const Timing& t)
 	if (posDay < posT) return -1;
 	if (posDay > posT) return 1;
 
-	//if (day < t.getDay()) return -1;
-	//if (day > t.getDay()) return 1;
-
 	if (start.getHour() < t.getStart().getHour()) return -1;
 	if (start.getHour() > t.getStart().getHour()) return 1;
 

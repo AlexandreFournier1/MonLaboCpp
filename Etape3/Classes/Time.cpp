@@ -133,9 +133,6 @@ Time& Time::operator=(const Time &t)
 	setHour(t.getHour());
 	setMinute(t.getMinute());
 
-	/*hour = t.hour;
-	minute = t.minute;*/
-
 	return (*this);
 }
 
@@ -161,34 +158,6 @@ Time operator+(const Time&t, const int m)
 
 	return tmp;
 }
-
-// Time Time::operator+(const int m) const
-// {
-// 	Time tmp(*this);
-
-// 	tmp.setMinute(tmp.getMinute() + m);
-
-// 	if (tmp.getMinute() >= 60)
-// 	{
-// 		tmp.setHour(tmp.getHour() + tmp.getMinute() / 60);
-// 		tmp.setMinute(tmp.getMinute() % 60);
-// 	}
-
-// 	if (tmp.getHour() >= 24)
-// 	{
-// 		tmp.setHour(tmp.getHour() % 24);
-// 	}
-
-// 	/*tmp.minute += m;
-
-// 	if (tmp.minute >= 60)
-// 	{
-// 		tmp.hour += tmp.minute / 60;
-// 		tmp.minute = tmp.minute % 60;
-// 	}*/
-
-// 	return tmp;
-// }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -222,37 +191,6 @@ Time operator+(const Time&t1, const Time&t2)
  	return tmp;
 }
 
-// Time Time::operator+(const Time&t2)
-// {
-// 	Time tmp;
-// 	Time t1(*this);
-
-// 	tmp.setHour(t1.getHour() + t2.getHour());
-// 	tmp.setMinute(t1.getMinute() + t2.getMinute());
-
-// 	if (tmp.getMinute() >= 60)
-// 	{
-// 		tmp.setHour(tmp.getHour() + tmp.getMinute() / 60);
-// 		tmp.setMinute(tmp.getMinute() % 60);
-// 	}
-
-// 	if (tmp.getHour() >= 24)
-// 	{
-// 		tmp.setHour(tmp.getHour() % 24);
-// 	}
-
-// 	/*tmp.hour = t1.hour + t2.hour;
-// 	tmp.minute = t1.minute + t2.minute;
-
-// 	if (tmp.minute >= 60)
-// 	{
-// 		tmp.hour += tmp.minute / 60;
-// 		tmp.minute = tmp.minute % 60;
-// 	}*/
-
-// 	return tmp;
-// }
-
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
@@ -261,8 +199,6 @@ Time Time::operator-(const int m)
 	Time tmp(*this);
 
 	tmp.minute = (tmp.hour * 60 + tmp.minute) - m;
-
-	//tmp.minute -= m;
 
 	if (tmp.minute >= 60)
 	{
@@ -285,17 +221,6 @@ Time Time::operator-(const int m)
 	{
 		tmp.hour = 24 - (-tmp.hour % 24);
 	}
-
-	/*// Convertir l'heure et les minutes en minutes totales
-    int totalMinutes = hour * 60 + minute - m;
-
-    // Réduire le résultat aux 24 heures en utilisant le modulo positif
-    totalMinutes = (totalMinutes % 1440 + 1440) % 1440;
-
-    // Recalculer les heures et minutes
-    Time tmp;
-    tmp.hour = totalMinutes / 60;
-    tmp.minute = totalMinutes % 60;*/
 
 	return tmp;
 }
@@ -321,7 +246,6 @@ Time operator-(const int m, const Time&t)
 	}
 
 	return tmp;
-	/*return t - m;*/
 }
 
 //////////////////////////////////////////////////////////////
