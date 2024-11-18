@@ -65,7 +65,7 @@ int Time::getMinute() const
 
 void Time::display() const
 {
-	cout << "Time : " << hour << "h" << minute << endl;
+	cout << "Time : " << setw(2) << setfill('0') << hour << "h" << setw(2) << setfill('0') << minute << endl;
 }
 
 }
