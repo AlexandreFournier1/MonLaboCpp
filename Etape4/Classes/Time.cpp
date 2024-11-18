@@ -39,6 +39,7 @@ Time::Time(int duration)
 	if (duration / 60 == 0)
 	{
 		setMinute(duration);
+		setHour(0);
 		return;
 	}
 
@@ -390,8 +391,8 @@ Time Time::operator--() // pré-décrémentation
 
     if (minute < 0)
 	{
-		hour -= -minute / 60;
-		minute = 60 - (-minute % 60);
+		hour -= 1;
+		minute = 60 + minute;	
 	}
 
 	if (hour < 0)
@@ -413,8 +414,8 @@ Time Time::operator--(int) // post-décrémentation
 
     if (minute < 0)
 	{
-		hour -= -minute / 60;
-		minute = 60 - (-minute % 60);
+		hour -= 1;
+		minute = 60 + minute;	
 	}
 
 	if (hour < 0)
