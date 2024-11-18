@@ -11,7 +11,7 @@ ECHO=echo Creation de
 
 .SILENT:
 
-Test3:	Test3.cpp $(OBJETS)/Time.o $(OBJETS)/Timing.o $(OBJETS)/Event.o
+Test3:	Test3.cpp $(FICHIERS_OBJS)
 		$(ECHO) Test3
 		$(COMPIL) Test3.cpp $(FICHIERS_OBJS) -o Test3
 
@@ -19,8 +19,8 @@ Test3:	Test3.cpp $(OBJETS)/Time.o $(OBJETS)/Timing.o $(OBJETS)/Event.o
 ############################################################################################
 
 $(OBJETS)/Time.o:	$(CLASSES)/Time.cpp $(CLASSES)/Time.h
-				$(ECHO) Time.o 
-				$(COMPIL) $(CLASSES)/Time.cpp -c -o $(OBJETS)/Time.o
+					$(ECHO) Time.o 
+					$(COMPIL) $(CLASSES)/Time.cpp -c -o $(OBJETS)/Time.o
 
 ############################################################################################
 ############################################################################################
