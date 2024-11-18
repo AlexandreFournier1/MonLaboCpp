@@ -141,11 +141,11 @@ void Essai1()
 /**********************************************************************************************/
 void Essai2()
 {
-  /*cout << "----- 2. Test de l'operateur (Time + int) de la classe Time --------" << endl;
+  cout << "----- 2. Test de l'operateur (Time + int) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h(15,30);
     cout << "h = Time(15,30)" << endl;
@@ -154,19 +154,37 @@ void Essai2()
     h = h + duration;
     cout << "Apres addition (h = h + duration) --> " << h << endl << endl; 
   }
-  // ...
+
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
   
-  cout << endl;*/
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai3()
 {
-  /*cout << "----- 3. Test de l'operateur (int + Time) de la classe Time --------" << endl;
+  cout << "----- 3. Test de l'operateur (int + Time) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h(15,30);
     cout << "h = Time(15,30)" << endl;
@@ -175,19 +193,37 @@ void Essai3()
     h = duration + h;
     cout << "Apres addition (h = duree + h) --> " << h << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai4()
 {
-  /*cout << "----- 4. Test de l'operateur (Time - int) de la classe Time --------" << endl;
+  cout << "----- 4. Test de l'operateur (Time - int) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h(1,30);
     cout << "h = Time(1,30)" << endl;
@@ -196,19 +232,37 @@ void Essai4()
     h = h - duration;
     cout << "Apres soustraction (h = h - duree) --> " << h << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai5()
 {
-  /*cout << "----- 5. Test de l'operateur (int - Time) de la classe Time --------" << endl;
+  cout << "----- 5. Test de l'operateur (int - Time) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h(1,30);
     cout << "h = Time(1,30)" << endl;
@@ -217,19 +271,37 @@ void Essai5()
     h = duration - h;
     cout << "Apres soustraction (h = duree - h) --> " << h << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai6()
 {
-  /*cout << "----- 6. Test de l'operateur (Time + Time) de la classe Time --------" << endl;
+  cout << "----- 6. Test de l'operateur (Time + Time) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h1(22,30);
     cout << "h1 = Time(22,30)" << endl;
@@ -240,19 +312,37 @@ void Essai6()
     h1 = h1 + d;
     cout << "Apres addtion (h1 = h1 + d) --> " << h1 << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai7()
 {
-  /*cout << "----- 7. Test de l'operateur (Time - Time) de la classe Time --------" << endl;
+  cout << "----- 7. Test de l'operateur (Time - Time) de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time d(120);
     cout << "d = " << d << endl;
@@ -261,19 +351,37 @@ void Essai7()
     h1 = h1 - d;
     cout << "Apres soustraction (h1 = h1 - d) --> " << h1 << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai8()
 {
-  /*cout << "----- 8. Test de l'operateur ++ de la classe Time --------" << endl;
+  cout << "----- 8. Test de l'operateur ++ de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h;
     cout << "Entrez l'heure h = "; cin >> h;
@@ -281,19 +389,37 @@ void Essai8()
     ++h;
     cout << "Apres incrementation (h++) --> " << h << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai9()
 {
-  /*cout << "----- 9. Test de l'operateur -- de la classe Time --------" << endl;
+  cout << "----- 9. Test de l'operateur -- de la classe Time --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Time h;
     cout << "Entrez l'heure h = "; cin >> h;
@@ -301,9 +427,27 @@ void Essai9()
     --h;
     cout << "Apres decrementation (h--) --> " << h << endl << endl; 
   }
-  // ...
   
-  cout << endl;*/
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+  
+  cout << endl;
 }
 
 /**********************************************************************************************/
