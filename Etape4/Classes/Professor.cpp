@@ -15,7 +15,7 @@ Professor::Professor():Schedulable()
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Professor::Professor(const Professor& p):Schedulable()
+Professor::Professor(const Professor& p):Schedulable(p)
 {
 	#ifdef DEBUG
 		cout << "[Professor] Appel constructeur de copie" << endl;
@@ -93,7 +93,7 @@ string Professor::toString() const
 string Professor::tuple() const
 {
 	ostringstream oss;
-	oss << this->getId() << ";" << this->getLastName() << ";" << this->getFirstName() << endl;
+	oss << to_string(this->getId()) << ";" << this->getLastName() << ";" << this->getFirstName() << endl;
 	return oss.str();
 }
 

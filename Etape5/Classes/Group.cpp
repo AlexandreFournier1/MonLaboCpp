@@ -14,7 +14,7 @@ Group::Group():Schedulable()
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Group::Group(const Group& g):Schedulable()
+Group::Group(const Group& g):Schedulable(g)
 {
 	#ifdef DEBUG
 		cout << "[Group] Appel constructeur de copie" << endl;
@@ -77,7 +77,7 @@ string Group::toString() const
 string Group::tuple() const
 {
 	ostringstream oss;
-	oss << this->getId() << ";" << this->getName() << endl;
+	oss << to_string(this->getId()) << ";" << this->getName() << endl;
 	return oss.str();
 }
 

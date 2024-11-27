@@ -8,6 +8,7 @@
 #include "Schedulable.h"
 
 using namespace std;
+using namespace planning;
 
 class Professor : public Schedulable
 {
@@ -32,8 +33,8 @@ public:
 
 	Professor& operator=(const Professor& p);
 	
-	virtual string toString() const override;
-	virtual string tuple() const override;
+	string toString() const override;
+	string tuple() const override;
 };
 
 #endif

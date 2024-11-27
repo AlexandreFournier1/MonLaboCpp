@@ -2,6 +2,8 @@
 
 #define DEBUG
 
+namespace planning {
+
 Schedulable::Schedulable()
 {
 	#ifdef DEBUG
@@ -28,6 +30,10 @@ Schedulable::Schedulable(const Schedulable& id)
 
 Schedulable::Schedulable(int i)
 {
+	#ifdef DEBUG
+		cout << "[Schedulable] Appel constructeur d'initialisation" << endl;
+	#endif
+
 	setId(i);
 }
 
@@ -55,4 +61,6 @@ void Schedulable::setId(const int i)
 int Schedulable::getId() const
 {
 	return id;
+}
+
 }

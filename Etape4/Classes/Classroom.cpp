@@ -15,7 +15,7 @@ Classroom::Classroom():Schedulable()
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-Classroom::Classroom(const Classroom& c):Schedulable()
+Classroom::Classroom(const Classroom& c):Schedulable(c)
 {
 	#ifdef DEBUG
 		cout << "[Classroom] Appel constructeur de copie" << endl;
@@ -96,7 +96,7 @@ string Classroom::toString() const
 string Classroom::tuple() const
 {
 	ostringstream oss;
-	oss << this->getId() << ";" << this->toString() << endl;
+	oss << to_string(this->getId()) << ";" << this->toString() << endl;
 	return oss.str();
 }
 
