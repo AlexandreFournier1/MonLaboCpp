@@ -95,7 +95,22 @@ Time Timing::getDuration() const
 
 void Timing::setDay(const string& d)
 {
-	day = d;
+	int days = 7, valid = 0;
+	string vec[days] = {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY};
+
+	for(int i = 0; i < days - 1; i++)
+	{
+		if (d == vec[i])
+		{
+			valid = 1;
+		}
+	}
+
+	if (!valid) throw TimingException("Invalid Day", TimingException::INVALID_DAY);
+	else 
+	{
+		day = d;
+	}
 }
 
 //////////////////////////////////////////////////////////////

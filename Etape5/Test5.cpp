@@ -453,11 +453,11 @@ void Essai9()
 /**********************************************************************************************/
 void Essai10()
 {
-  /*cout << "----- 10. Test de la methode setDay() de la classe Timing --------" << endl;
+  cout << "----- 10. Test de la methode setDay() de la classe Timing --------" << endl;
   // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
   // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
-  // ...
+  try
   {
     Timing t;
     string day;
@@ -466,18 +466,26 @@ void Essai10()
     t.setDay(day);
     t.display();
   }
-  // ...
+
+  catch(TimingException& t)
+  {
+    if(t.getCode() == 1)
+    {
+      cout << "Erreur dans l'attribution de jour : " << t.getMessage() << endl;
+      cout << "Code d'erreur : INVALID_DAY" << endl;
+    }
+  }
   
-  cout << endl;*/
+  cout << endl;
 }
 
 /**********************************************************************************************/
 void Essai11()
 {
-  /*cout << "----- 11. Gestion de plusieurs exceptions simultanement ---" << endl;
+  cout << "----- 11. Gestion de plusieurs exceptions simultanement ---" << endl;
   // A COMPLETER : Traitez TOUTES les exceptions susceptible d'etre lancee par le bloc de code suivant (try...catch)
 
-  // ...
+  try
   {
     Timing t;
     string day;
@@ -508,7 +516,40 @@ void Essai11()
     cout << "Voici le Timing de l'Event planifie : ";
     e.getTiming().display();  // !!!
   }
-  // ...*/
+
+  catch(TimeException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_HOUR
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_HOUR" << endl;
+        break;
+      case 2: // INVALID_MINUTE
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_MINUTE" << endl;
+        break;
+      case 3: // OVERFLOW
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : OVERFLOW" << endl;
+        break;
+    }
+  }
+
+  catch(TimingException& t)
+  {
+    switch(t.getCode())
+    {
+      case 1: // INVALID_DAY
+        cout << "Erreur dans l'attribution de jour : " << t.getMessage() << endl;
+        cout << "Code d'erreur : INVALID_DAY" << endl;        
+        break;
+      case 2: // NO_TIMING
+        cout << "Erreur dans la gestion du temps : " << t.getMessage() << endl;
+        cout << "Code d'erreur : NO_TIMING" << endl;
+        break;
+    }
+  }
 }
 
 

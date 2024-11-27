@@ -10,7 +10,8 @@ FICHIERS_OBJS=$(OBJETS)/Event.o \
 			$(OBJETS)/Group.o \
 			$(OBJETS)/Classroom.o \
 			$(OBJETS)/Exception.o \
-			$(OBJETS)/TimeException.o
+			$(OBJETS)/TimeException.o \
+			$(OBJETS)/TimingException.o
 EXEC=Test5
 ECHO=echo Creation de
 
@@ -85,6 +86,13 @@ $(OBJETS)/Exception.o:	$(CLASSES)/Exception.cpp $(CLASSES)/Exception.h
 $(OBJETS)/TimeException.o:	$(CLASSES)/TimeException.cpp $(CLASSES)/TimeException.h
 							$(ECHO) TimeException.o
 							$(COMPIL) $(CLASSES)/TimeException.cpp -c -o $(OBJETS)/TimeException.o
+
+############################################################################################
+############################################################################################
+
+$(OBJETS)/TimingException.o:	$(CLASSES)/TimingException.cpp $(CLASSES)/TimingException.h
+								$(ECHO) TimingException.o
+								$(COMPIL) $(CLASSES)/TimingException.cpp -c -o $(OBJETS)/TimingException.o
 
 clean:
 	rm -f $(FICHIERS_OBJS) core

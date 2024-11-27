@@ -7,6 +7,7 @@
 using namespace std;
 
 #include "Time.h"
+#include "TimingException.h"
 
 namespace planning {
 

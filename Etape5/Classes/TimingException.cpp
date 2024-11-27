@@ -1,18 +1,17 @@
-#include "TimeException.h"
+#include "TimingException.h"
 
 namespace planning {
 
-const int TimeException::INVALID_HOUR = 1;
-const int TimeException::INVALID_MINUTE = 2; 
-const int TimeException::OVERFLOW = 3;
+const int TimingException::INVALID_DAY = 1;
+const int TimingException::NO_TIMING = 2; 
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-TimeException::TimeException():Exception()
+TimingException::TimingException():Exception()
 {
 	#ifdef DEBUG
-		cout << "[TimeException] Appel constructeur par défaut" << endl;
+		cout << "[TimingException] Appel constructeur par défaut" << endl;
 	#endif
 
 	setCode(0);
@@ -21,10 +20,10 @@ TimeException::TimeException():Exception()
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-TimeException::TimeException(const TimeException& t):Exception(t)
+TimingException::TimingException(const TimingException& t):Exception(t)
 {
 	#ifdef DEBUG
-		cout << "[TimeException] Appel constructeur de copie" << endl;
+		cout << "[TimingException] Appel constructeur de copie" << endl;
 	#endif
 
 	setCode(t.getCode());
@@ -33,10 +32,10 @@ TimeException::TimeException(const TimeException& t):Exception(t)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-TimeException::TimeException(string m, int c):Exception(m)
+TimingException::TimingException(string m, int c):Exception(m)
 {
 	#ifdef DEBUG
-		cout << "[TimeException] Appel constructeur d'initialisation" << endl;
+		cout << "[TimingException] Appel constructeur d'initialisation" << endl;
 	#endif
 
 	setCode(c);
@@ -45,17 +44,17 @@ TimeException::TimeException(string m, int c):Exception(m)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-TimeException::~TimeException()
+TimingException::~TimingException()
 {
 	#ifdef DEBUG
-		cout << "[TimeException] Appel destructeur" << endl;
+		cout << "[TimingException] Appel destructeur" << endl;
 	#endif
 }
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 	
-void TimeException::setCode(const int c)
+void TimingException::setCode(const int c)
 {
 	code = c;
 }
@@ -63,7 +62,7 @@ void TimeException::setCode(const int c)
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-int TimeException::getCode() const
+int TimingException::getCode() const
 {
 	return code;
 }

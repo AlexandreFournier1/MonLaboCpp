@@ -113,7 +113,15 @@ const char * Event::getTitle() const
 
 Timing Event::getTiming() const
 {
-	return *timing;
+	if (timing == nullptr)
+	{
+		throw TimingException("No Timing", TimingException::NO_TIMING);
+	}
+	
+	else 
+	{
+		return *timing;
+	}
 }
 
 //////////////////////////////////////////////////////////////
