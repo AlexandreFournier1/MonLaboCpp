@@ -1,6 +1,6 @@
 #include "Classroom.h"
 
-#define DEBUG
+//#define DEBUG
 
 Classroom::Classroom():Schedulable()
 {
@@ -105,7 +105,109 @@ string Classroom::tuple() const
 
 ostream& operator<<(ostream& s, const Classroom& c)
 {
-	s << c.toString() << endl;
+	s << "<Classroom>" << endl;
+	s << "<id>" << endl;
+	s << c.getId() << endl;
+	s << "</id>" << endl;
+	s << "<name>" << endl;
+	s << c.getName() << endl;
+	s << "</name>" << endl;
+	s << "<seatingCapacity>" << endl;
+	s << c.getSeatingCapacity() << endl;
+	s << "</seatingCapacity>" << endl;
+	s << "</Classroom>";
+
+	return s;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+istream& operator>>(istream& s, Classroom& c)
+{
+	string line;
+	Classroom classroomTemp;
+
+	// Ligne 1 : <Classroom>
+	getline(s, line);
+	if (line != "<Classroom>") 
+	{
+		cout << "Format invalide : <Classroom> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 2 : <id>
+	getline(s, line);
+	if (line != "<id>") 
+	{
+		cout << "Format invalide : <id> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 3 : id
+	getline(s, line);
+	classroomTemp.setId(stoi(line));
+
+	// Ligne 4 : </id>
+	getline(s, line);
+	if (line != "</id>") 
+	{
+		cout << "Format invalide : </id> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 5 : <name>
+	getline(s, line);
+	if (line != "<name>") 
+	{
+		cout << "Format invalide : <name> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 6 : name
+	getline(s, line);
+	classroomTemp.setName(line);
+
+	// Ligne 7 : </name>
+	getline(s, line);
+	if (line != "</name>") 
+	{
+		cout << "Format invalide : </name> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 8 : <seatingCapacity>
+	getline(s, line);
+	if (line != "<seatingCapacity>") 
+	{
+		cout << "Format invalide : <seatingCapacity> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 9 : id
+	getline(s, line);
+	classroomTemp.setSeatingCapacity(stoi(line));
+
+	// Ligne 10 : </seatingCapacity>
+	getline(s, line);
+	if (line != "</seatingCapacity>") 
+	{
+		cout << "Format invalide : </seatingCapacity> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 11 : </Classroom>
+	getline(s, line);
+	if (line != "</Classroom>") 
+	{
+		cout << "Format invalide : </Classroom> manquant" << endl;
+		exit(0);
+	}
+
+	c.setId(classroomTemp.getId());
+	c.setName(classroomTemp.getName());
+	c.setSeatingCapacity(classroomTemp.getSeatingCapacity());
+
 	return s;
 }
 

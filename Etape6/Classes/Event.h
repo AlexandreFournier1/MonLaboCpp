@@ -13,6 +13,9 @@ namespace planning {
 
 class Event
 {
+	friend ostream& operator<<(ostream& s, const Event& e);
+	friend istream& operator>>(istream& s, Event& e);
+
 private:
 	int code;
 	char* title;
@@ -36,6 +39,7 @@ public:
 	//////////////////////////////////////////////////////////////
 
 	void display() const;
+	bool isNull() const;
 
 	//////////////////////////////////////////////////////////////
 

@@ -13,6 +13,9 @@ namespace planning {
 
 class Timing
 {
+	friend ostream& operator<<(ostream& s, const Timing& t);
+	friend istream& operator>>(istream& s, Timing& t);
+
 private:
 	string day;
 	Time start;

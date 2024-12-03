@@ -13,6 +13,7 @@ using namespace planning;
 class Classroom : public Schedulable
 {
 	friend ostream& operator<<(ostream& s, const Classroom& c);
+	friend istream& operator>>(istream& s, Classroom& c);
 
 private:
 	string name;

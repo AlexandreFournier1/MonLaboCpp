@@ -59,7 +59,7 @@ int Menu()
 /*********************************************************************************************/
 void Essai1()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
-  /*cout << "----- 1. Sérialisation/Désérialisation d'un objet de la classe Time ------" << endl;
+  cout << "----- 1. Sérialisation/Désérialisation d'un objet de la classe Time ------" << endl;
   
   Time h(8,20);
   h.display();
@@ -79,13 +79,13 @@ void Essai1()  // Attention : utilisez les flux texte (<< et >>) !!!!
   fichier2 >> t2;  // deserialisation
   fichier2.close();
   t2.display();
-  cout << endl;*/
+  cout << endl;
 }
 
 /*********************************************************************************************/
 void Essai2()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
-  /*cout << "----- 2. Sérialisation/Désérialisation d'un objet de la classe Classroom ------" << endl;
+  cout << "----- 2. Sérialisation/Désérialisation d'un objet de la classe Classroom ------" << endl;
   
   Classroom c(2,"Quel bel auditoire !",110);
   cout << "Avant sérialisation : " << c.toString() << endl;
@@ -103,13 +103,13 @@ void Essai2()  // Attention : utilisez les flux texte (<< et >>) !!!!
   getline(fichier2,tag);
   fichier2 >> c2;
   fichier2.close();
-  cout << "Après sérialisation : " << c.toString() << endl;*/
+  cout << "Après sérialisation : " << c.toString() << endl;
 }
 
 /*********************************************************************************************/
 void Essai3()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
-  /*cout << "----- 3. Sérialisation/Désérialisation d'un objet de la classe Timing ------" << endl;
+  cout << "----- 3. Sérialisation/Désérialisation d'un objet de la classe Timing ------" << endl;
   
   Timing t("Mardi",Time(8,20),Time(120));
   t.display();
@@ -129,13 +129,13 @@ void Essai3()  // Attention : utilisez les flux texte (<< et >>) !!!!
   fichier2 >> t2;
   fichier2.close();
   t2.display();
-  cout << endl;*/
+  cout << endl;
 }
 
 /*********************************************************************************************/
 void Essai4()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
-  /*cout << "----- 4. Sérialisation/Désérialisation d'un objet de la classe Event ------" << endl;
+  cout << "----- 4. Sérialisation/Désérialisation d'un objet de la classe Event ------" << endl;
 
   Event e1(17,"Labo C++");
   e1.setTiming(Timing(Timing::TUESDAY,Time(10,30),Time(120)));
@@ -175,5 +175,5 @@ void Essai4()  // Attention : utilisez les flux texte (<< et >>) !!!!
   fichier4 >> E;
   fichier4.close();
   E.display();
-  cout << endl;*/
+  cout << endl;
 }

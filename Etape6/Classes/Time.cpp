@@ -317,7 +317,15 @@ Time Time::operator-(const Time&t2)
 
 ostream& operator<<(ostream& s, const Time& t)
 {
-	s << "Time : " << setw(2) << setfill('0') << t.getHour() << "h" << setw(2) << setfill('0') << t.getMinute() << endl;
+	s << "<Time>" << endl;
+	s << "<hour>" << endl;
+	s << setw(2) << setfill('0') << t.getHour() << endl;
+	s << "</hour>" << endl;
+	s << "<minute>" << endl;
+	s << setw(2) << setfill('0') << t.getMinute() << endl;
+	s << "</minute>" << endl;
+	s << "</Time>";
+
 	return s;
 }
 
@@ -326,24 +334,63 @@ ostream& operator<<(ostream& s, const Time& t)
 
 istream& operator>>(istream& s, Time& t)
 {
-	string tmp;
+	string line;
 	Time timeTemp;
 
-	s >> tmp;
-
-	if (tmp.size() != 5) 
+	// Ligne 1 : <Time>
+	getline(s, line);
+	if (line != "<Time>") 
 	{
-		cout << "Invalid Length !" << endl;
+		cout << "Format invalide : <Time> manquant" << endl;
 		exit(0);
 	}
 
-	timeTemp.setHour(stoi(tmp.substr(0,2)));
-	timeTemp.setMinute(stoi(tmp.substr(3,2)));
-
-	if (timeTemp.getHour() < 0 || timeTemp.getHour() > 24 || timeTemp.getMinute() < 0 || timeTemp.getMinute() > 60)
+	// Ligne 2 : <hour>
+	getline(s, line);
+	if (line != "<hour>") 
 	{
-		cout << "Invalid Time !" << endl;
+		cout << "Format invalide : <hour> manquant" << endl;
 		exit(0);
+	}
+
+	// Ligne 3 : heure
+	getline(s, line);
+	timeTemp.setHour(stoi(line));
+
+	// Ligne 4 : </hour>
+	getline(s, line);
+	if (line != "</hour>") 
+	{
+		cout << "Format invalide : <hour> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 5 : <minute>
+	getline(s, line);
+	if (line != "<minute>") 
+	{
+		cout << "Format invalide : <minute> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 6 : minute
+	getline(s, line);
+	timeTemp.setMinute(stoi(line));
+
+	// Ligne 7 : </minute>
+	getline(s, line);
+	if (line != "</minute>") 
+	{
+		cout << "Format invalide : <minute> manquant" << endl;
+		exit(0);
+	}
+
+	// Ligne 8 : </Time>
+	getline(s, line);
+	if (line != "</Time>") 
+	{
+		cout << "Format invalide : </Time> manquant" << endl;
+		exit(1);
 	}
 
 	t.setHour(timeTemp.getHour());
