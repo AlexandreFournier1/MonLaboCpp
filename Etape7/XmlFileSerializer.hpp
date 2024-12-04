@@ -1,0 +1,5 @@
+#ifndef XMLFILESERIALIZER_HPP
+#define XMLFILESERIALIZER_HPP
+
+
+#endif
