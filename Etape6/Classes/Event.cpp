@@ -224,17 +224,11 @@ istream& operator>>(istream& s, Event& e)
 		exit(0);
 	}
 
-	if (!(e.isNull()))
-	{
-		// Ligne 8 : <timing>
-		getline(s, line);
-		if (line != "<timing>") 
-		{
-			cout << "Format invalide : <timing> manquant" << endl;
-			exit(0);
-		}
-
-		// Ligne 9-34 : timing
+	// Ligne 8 : <timing> ou </Event>
+    getline(s, line);
+    if (line == "<timing>")
+    {
+        // Ligne 9-34 : timing
         s >> timingTemp;
 
         // Ligne 35 : </timing>
@@ -246,16 +240,17 @@ istream& operator>>(istream& s, Event& e)
         }
 
         e.setTiming(timingTemp);
-	}
-    //else e.setTiming(nullptr);
 
-	// Ligne 8 ou 36 : </Event>
-	getline(s, line);
-	if (line != "</Event>") 
-	{
-		cout << "Format invalide : </Event> manquant" << endl;
-		exit(0);
-	}
+        // Ligne 36 : </Event>
+        getline(s, line);
+    }
+
+    // Ligne 8 ou 36 : </Event>
+    if (line != "</Event>") 
+    {
+        cout << "Format invalide : </Event> manquant" << endl;
+        exit(0);
+    }
 
 	e.setCode(eventTemp.getCode());
 	e.setTitle(eventTemp.getTitle());
