@@ -36,11 +36,9 @@ Time::Time(int duration)
 		cout << "[Time] Appel du constructeur d'initialisation 2" << endl;
 	#endif
 
-	if (duration / 60 == 0)
+	if (duration < 0 || duration > 1440)
 	{
-		setMinute(duration);
-		setHour(0);
-		return;
+		throw TimeException("Time Overflow", TimeException::OVERFLOW);
 	}
 
 	setHour(duration/60);
@@ -150,26 +148,11 @@ Time& Time::operator=(const Time &t)
 
 Time operator+(const Time&t, const int m)
 {
-	Time tmp(t);
+	int duration;
 
-	tmp.minute += m;
+	duration = m + t.getMinute() + t.getHour() * 60;
 
-	if (tmp.minute >= 60)
-	{
-		if (tmp.hour == 24)
-		{
-			throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-		}
-
-		tmp.hour += tmp.minute / 60;
-		tmp.minute = tmp.minute % 60;
-	}
-
-	if (tmp.hour >= 24)
-	{
-		//tmp.hour = tmp.hour % 24;
-		throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-	}
+	Time tmp(duration);
 
 	return tmp;
 }
@@ -187,27 +170,11 @@ Time operator+(const int m, const Time&t)
 
 Time operator+(const Time&t1, const Time&t2)
 {
-	Time tmp;
+	int duration;
 
-	tmp.hour = t1.getHour() + t2.getHour();
-	tmp.minute = t1.getMinute() + t2.getMinute();
-
-	if (tmp.minute >= 60)
-	{
-		if (tmp.hour == 24)
-		{
-			throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-		}
-
-		tmp.hour += tmp.minute / 60;
-		tmp.minute = tmp.minute % 60;
-	}
-
-	if (tmp.hour >= 24)
-	{
-		//tmp.hour = tmp.hour % 24;
-		throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-	}
+	duration = t1.getMinute() + t2.getMinute() + t1.getHour() * 60 + t2.getHour() * 60;
+	
+	Time tmp(duration);
 
  	return tmp;
 }
@@ -217,37 +184,11 @@ Time operator+(const Time&t1, const Time&t2)
 
 Time Time::operator-(const int m)
 {
-	Time tmp(*this);
+	int duration;
 
-	tmp.minute = (tmp.hour * 60 + tmp.minute) - m;
+	duration = (this->getMinute() + this->getHour() * 60) - m;
 
-	if (tmp.minute >= 60)
-	{
-		tmp.hour = tmp.minute / 60;
-		tmp.minute = tmp.minute % 60;
-	}
-
-	if (tmp.hour >= 24)
-	{
-		tmp.hour = tmp.hour % 24;
-	}
-
-	if (tmp.minute < 0)
-	{
-		if (tmp.hour == 0)
-		{
-			throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-		}
-
-		tmp.hour -= -tmp.minute / 60;
-		tmp.minute = 60 - (-tmp.minute % 60);
-	}
-
-	if (tmp.hour < 0)
-	{
-		//tmp.hour = 24 - (-tmp.hour % 24);
-		throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-	}
+	Time tmp(duration);
 
 	return tmp;
 }
@@ -257,26 +198,11 @@ Time Time::operator-(const int m)
 
 Time operator-(const int m, const Time&t)
 {
-	Time tmp;
+	int duration;
 
-	tmp.minute = m - (t.hour * 60 + t.minute);
+	duration = m - (t.getHour() * 60 + t.getMinute());
 
-	if (tmp.minute < 0)
-	{
-		if (tmp.hour == 0)
-		{
-			throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-		}
-
-		tmp.hour -= -tmp.minute / 60;
-		tmp.minute = 60 - (-tmp.minute % 60);
-	}
-
-	if (tmp.hour < 0)
-	{
-		//tmp.hour = 24 - (-tmp.hour % 24);
-		throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-	}
+	Time tmp(duration);
 
 	return tmp;
 }
@@ -286,28 +212,11 @@ Time operator-(const int m, const Time&t)
 
 Time Time::operator-(const Time&t2)
 {
-	Time tmp;
-	Time t1(*this);
+	int duree;
 
-	tmp.hour = t1.hour - t2.hour;
-	tmp.minute = t1.minute - t2.minute;
+	duree = (this->getMinute() + this->getHour() * 60) - (t2.getMinute() + t2.getHour() * 60);
 
-	if (tmp.minute < 0)
-	{
-		if (tmp.hour == 0)
-		{
-			throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-		}
-
-		tmp.hour -= -tmp.minute / 60;
-		tmp.minute = 60 - (-tmp.minute % 60);
-	}
-
-	if (tmp.hour < 0)
-	{
-		//tmp.hour = 24 - (-tmp.hour % 24);
-		throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-	}
+	Time tmp(duree);
 
 	return tmp;
 }
@@ -339,19 +248,9 @@ istream& operator>>(istream& s, Time& t)
 
 	// Ligne 1 : <Time>
 	getline(s, line);
-	if (line != "<Time>") 
-	{
-		cout << "Format invalide : <Time> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 2 : <hour>
 	getline(s, line);
-	if (line != "<hour>") 
-	{
-		cout << "Format invalide : <hour> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 3 : heure
 	getline(s, line);
@@ -359,19 +258,10 @@ istream& operator>>(istream& s, Time& t)
 
 	// Ligne 4 : </hour>
 	getline(s, line);
-	if (line != "</hour>") 
-	{
-		cout << "Format invalide : <hour> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 5 : <minute>
 	getline(s, line);
 	if (line != "<minute>") 
-	{
-		cout << "Format invalide : <minute> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 6 : minute
 	getline(s, line);
@@ -379,19 +269,9 @@ istream& operator>>(istream& s, Time& t)
 
 	// Ligne 7 : </minute>
 	getline(s, line);
-	if (line != "</minute>") 
-	{
-		cout << "Format invalide : <minute> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 8 : </Time>
 	getline(s, line);
-	if (line != "</Time>") 
-	{
-		cout << "Format invalide : </Time> manquant" << endl;
-		exit(1);
-	}
 
 	t.setHour(timeTemp.getHour());
 	t.setMinute(timeTemp.getMinute());
@@ -428,26 +308,7 @@ bool Time::operator==(const Time&t)
 
 Time Time::operator++() // pré-incrémentation
 {
-	minute += 30;
-
-    if (minute >= 60)
-    {
-    	if (hour == 24)
-		{
-			throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-		}
-
-        hour += minute / 60;
-        minute = minute % 60;
-    }
-
-    if (hour >= 24)
-    {
-    	//hour = hour % 24;
-    	throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-    }
-
-    return (*this);
+	return (*this) + 30;
 }
 
 //////////////////////////////////////////////////////////////
@@ -457,24 +318,7 @@ Time Time::operator++(int) // post-incrémentation
 {
 	Time tmp(*this);
 
-	minute += 30;
-
-    if (minute >= 60)
-    {
-    	if (tmp.hour == 24)
-		{
-			throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-		}
-
-        hour += minute / 60;
-        minute = minute % 60;
-    }
-
-    if (hour >= 24)
-    {
-    	//hour = hour % 24;
-    	throw TimeException("Overflow: heures posterieur a 23:59", TimeException::OVERFLOW);
-    }
+    *this = *this + 30;
 
 	return tmp;
 }
@@ -484,29 +328,7 @@ Time Time::operator++(int) // post-incrémentation
 
 Time Time::operator--() // pré-décrémentation
 {
-	minute -= 30;
-
-    if (minute < 0)
-	{
-		if (hour == 0)
-		{
-			throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-		}
-
-		hour -= 1;
-		minute = 60 + minute;
-
-		/*hour -= -minute / 60;
-		minute = 60 - (-minute % 60);*/
-	}
-
-	if (hour < 0)
-	{
-		//hour = 24 - (-hour % 24);
-		throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-	}
-
-    return (*this);
+	return (*this) - 30;
 }
 
 //////////////////////////////////////////////////////////////
@@ -516,27 +338,7 @@ Time Time::operator--(int) // post-décrémentation
 {
 	Time tmp(*this);
 
-	minute -= 30;
-
-    if (minute < 0)
-	{
-		if (tmp.hour == 0)
-		{
-			throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-		}
-
-		hour -= 1;
-		minute = 60 + minute;
-
-		/*hour -= -minute / 60;
-		minute = 60 - (-minute % 60);*/
-	}
-
-	if (hour < 0)
-	{
-		//hour = 24 - (-hour % 24);
-		throw TimeException("Overflow: heures anterieur a 00:00", TimeException::OVERFLOW);
-	}
+	*this = *this - 30;
 
 	return tmp;
 }

@@ -130,19 +130,9 @@ istream& operator>>(istream& s, Classroom& c)
 
 	// Ligne 1 : <Classroom>
 	getline(s, line);
-	if (line != "<Classroom>") 
-	{
-		cout << "Format invalide : <Classroom> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 2 : <id>
 	getline(s, line);
-	if (line != "<id>") 
-	{
-		cout << "Format invalide : <id> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 3 : id
 	getline(s, line);
@@ -150,19 +140,9 @@ istream& operator>>(istream& s, Classroom& c)
 
 	// Ligne 4 : </id>
 	getline(s, line);
-	if (line != "</id>") 
-	{
-		cout << "Format invalide : </id> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 5 : <name>
 	getline(s, line);
-	if (line != "<name>") 
-	{
-		cout << "Format invalide : <name> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 6 : name
 	getline(s, line);
@@ -170,19 +150,9 @@ istream& operator>>(istream& s, Classroom& c)
 
 	// Ligne 7 : </name>
 	getline(s, line);
-	if (line != "</name>") 
-	{
-		cout << "Format invalide : </name> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 8 : <seatingCapacity>
 	getline(s, line);
-	if (line != "<seatingCapacity>") 
-	{
-		cout << "Format invalide : <seatingCapacity> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 9 : id
 	getline(s, line);
@@ -190,19 +160,9 @@ istream& operator>>(istream& s, Classroom& c)
 
 	// Ligne 10 : </seatingCapacity>
 	getline(s, line);
-	if (line != "</seatingCapacity>") 
-	{
-		cout << "Format invalide : </seatingCapacity> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 11 : </Classroom>
 	getline(s, line);
-	if (line != "</Classroom>") 
-	{
-		cout << "Format invalide : </Classroom> manquant" << endl;
-		exit(0);
-	}
 
 	c.setId(classroomTemp.getId());
 	c.setName(classroomTemp.getName());

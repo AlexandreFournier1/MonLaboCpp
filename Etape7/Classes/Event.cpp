@@ -178,19 +178,9 @@ istream& operator>>(istream& s, Event& e)
 
 	// Ligne 1 : <Event>
 	getline(s, line);
-	if (line != "<Event>") 
-	{
-		cout << "Format invalide : <Event> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 2 : <code>
 	getline(s, line);
-	if (line != "<code>") 
-	{
-		cout << "Format invalide : <code> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 3 : code
 	getline(s, line);
@@ -198,19 +188,9 @@ istream& operator>>(istream& s, Event& e)
 
 	// Ligne 4 : </code>
 	getline(s, line);
-	if (line != "</code>") 
-	{
-		cout << "Format invalide : </code> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 5 : <title>
 	getline(s, line);
-	if (line != "<title>") 
-	{
-		cout << "Format invalide : <title> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 6 : title
 	getline(s, line);
@@ -218,11 +198,6 @@ istream& operator>>(istream& s, Event& e)
 
 	// Ligne 7 : </title>
 	getline(s, line);
-	if (line != "</title>") 
-	{
-		cout << "Format invalide : </title> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 8 : <timing> ou </Event>
     getline(s, line);
@@ -233,23 +208,11 @@ istream& operator>>(istream& s, Event& e)
 
         // Ligne 35 : </timing>
         getline(s, line);
-        if (line != "</timing>") 
-        {
-            cout << "Format invalide : </timing> manquant" << endl;
-            exit(0);
-        }
 
         e.setTiming(timingTemp);
 
         // Ligne 36 : </Event>
         getline(s, line);
-    }
-
-    // Ligne 8 ou 36 : </Event>
-    if (line != "</Event>") 
-    {
-        cout << "Format invalide : </Event> manquant" << endl;
-        exit(0);
     }
 
 	e.setCode(eventTemp.getCode());

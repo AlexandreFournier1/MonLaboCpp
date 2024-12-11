@@ -228,19 +228,9 @@ istream& operator>>(istream& s, Timing& t)
 
 	// Ligne 1 : <Timing>
 	getline(s, line);
-	if (line != "<Timing>") 
-	{
-		cout << "Format invalide : <Timing> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 2 : <day>
 	getline(s, line);
-	if (line != "<day>") 
-	{
-		cout << "Format invalide : <day> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 3 : day
 	getline(s, line);
@@ -248,58 +238,28 @@ istream& operator>>(istream& s, Timing& t)
 
 	// Ligne 4 : </day>
 	getline(s, line);
-	if (line != "</day>") 
-	{
-		cout << "Format invalide : </day> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 5 : <start>
 	getline(s, line);
-	if (line != "<start>") 
-	{
-		cout << "Format invalide : <start> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 6-13 : Time
 	s >> startTemp;
 
 	// Ligne 14 : </start>
 	getline(s, line);
-	if (line != "</start>") 
-	{
-		cout << "Format invalide : </start> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 15 : <duration>
 	getline(s, line);
-	if (line != "<duration>") 
-	{
-		cout << "Format invalide : <duration> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 16-23 : Time
 	s >> durationTemp;
 
 	// Ligne 24 : </duration>
 	getline(s, line);
-	if (line != "</duration>") 
-	{
-		cout << "Format invalide : </duration> manquant" << endl;
-		exit(0);
-	}
 
 	// Ligne 25 : </Timing>
 	getline(s, line);
-	if (line != "</Timing>") 
-	{
-		cout << "Format invalide : </Timing> manquant" << endl;
-		exit(0);
-	}
-
+	
 	t.setDay(timingTemp.getDay());
 	t.setStart(startTemp);
 	t.setDuration(timingTemp.getDuration());
