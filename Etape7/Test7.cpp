@@ -6,7 +6,7 @@ using namespace std;
 #include "Event.h"
 using namespace planning;
 #include "Classroom.h"
-//#include "XmlFileSerializer.hpp"
+#include "XmlFileSerializer.hpp"
 
 int  Menu();
 void Essai1();
